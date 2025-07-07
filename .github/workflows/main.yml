@@ -1,0 +1,29 @@
+name: Greet User via Custom Docker Action
+
+on: [push]
+
+jobs:
+  greeting_job:
+    name: Greet Someone from Docker
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build custom Docker image
+        run: docker build --no-cache -t greeter ./custom-docker-action
+
+      - name: Run Docker container with custom input
+        run: |
+          docker run --rm \
+            -e INPUT_USERNAME="Rohit" \
+            -v ${{ github.workspace }}:/workspace \
+            greeter
+
+      - name: Display greeting message
+        id: read_output
+        run: |
+          result=$(cat /workspace/result.txt)
+          echo "$result"
+          echo "$result" >> "$GITHUB_OUTPUT"
