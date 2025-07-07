@@ -1,0 +1,13 @@
+name: "Friendly Greeting"
+description: "Docker action that sends a custom greeting"
+inputs:
+  username:
+    description: "The person to greet"
+    required: true
+    default: "Buddy"
+outputs:
+  message:
+    description: "The final greeting message"
+runs:
+  using: "docker"
+  image: "Dockerfile"
