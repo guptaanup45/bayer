@@ -17,7 +17,7 @@ jobs:
       - name: Run Docker container with custom input
         run: |
           docker run --rm \
-            -e INPUT_USERNAME="Rohit" \
+            -e INPUT_USERNAME="Anup" \
             -v ${{ github.workspace }}:/workspace \
             greeter
 
