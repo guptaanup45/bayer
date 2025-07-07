@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   greeting_job:
-    name: Greet Someone from Docker
+    name:Say Hello with Custom Docker
     runs-on: self-hosted
 
     steps:
